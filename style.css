@@ -1,0 +1,277 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Orbitron', sans-serif;
+    background-color: #0d1a26; /* Fondo oscuro base */
+    color: #e0f2f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* Usamos 'hidden' para el overflow por los efectos de luz */
+    overflow: hidden;
+    position: relative;
+
+    /* Fondo temático de fiesta/cumpleaños sutil */
+    background-image:
+        radial-gradient(circle at 20% 80%, rgba(255, 99, 71, 0.05) 0%, transparent 50%), /* Tomate */
+        radial-gradient(circle at 80% 20%, rgba(255, 215, 0, 0.05) 0%, transparent 50%), /* Oro */
+        radial-gradient(circle at 50% 50%, rgba(70, 130, 180, 0.05) 0%, transparent 50%); /* Azul acero */
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    animation: backgroundConfetti 30s linear infinite alternate;
+}
+
+/* Importar fuente Orbitron de Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+/* Animación para el fondo temático (simula movimiento de confeti o luces) */
+@keyframes backgroundConfetti {
+    0% { background-position: 0% 0%, 100% 100%, 50% 50%; }
+    100% { background-position: 100% 100%, 0% 0%, 0% 100%; }
+}
+
+.container {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 40px rgba(255, 105, 180, 0.4);
+    border: 2px solid rgba(255, 105, 180, 0.6);
+    z-index: 10;
+    position: relative;
+    margin: 20px; /* Margen para asegurar espacio en bordes */
+    max-width: 90vw; /* Ajuste para que no ocupe todo el ancho en pantallas muy grandes */
+}
+
+.title {
+    font-size: 2.2em;
+    margin-bottom: 25px;
+    color: #ffcc00;
+    text-shadow: 0 0 10px #ffcc00, 0 0 20px #ffcc00, 0 0 30px #ffcc00;
+    letter-spacing: 2px;
+}
+
+.countdown {
+    font-size: 3.5em;
+    font-weight: bold;
+    margin-bottom: 35px;
+    color: #00ffcc;
+    text-shadow: 0 0 5px #00ffcc, 0 0 15px #00ffcc, 0 0 25px #00ffcc, 0 0 40px #00ffcc;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap; /* Permitir que los elementos salten de línea en pantallas pequeñas */
+}
+
+.countdown span {
+    display: inline-block;
+    min-width: 65px;
+    text-align: center;
+    padding: 9px 0;
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 7px;
+    box-shadow: inset 0 0 10px rgba(0, 255, 204, 0.3);
+    /* Para asegurar que los números no se queden sin espacio */
+    white-space: nowrap;
+}
+
+/* Ajuste de margen para espaciado en pantallas más grandes */
+.countdown span:not(:first-child) {
+    margin-left: 15px;
+}
+/* Eliminar el margen extra si los elementos se rompen en una nueva línea */
+@media (max-width: 600px) {
+    .countdown span:not(:first-child) {
+        margin-left: 0; /* Elimina el margen si hay wrap */
+    }
+    .countdown span {
+        margin: 5px; /* Pequeño margen para separación entre todos los spans en móvil */
+    }
+}
+
+
+.countdown span::after {
+    content: '';
+    display: block;
+    font-size: 0.3em;
+    text-shadow: none;
+    color: #ffd700;
+    margin-top: -8px;
+    letter-spacing: 1px;
+}
+
+#days::after { content: 'días'; }
+#hours::after { content: 'horas'; }
+#minutes::after { content: 'min'; }
+#seconds::after { content: 'seg'; }
+
+
+.surprise-button {
+    padding: 18px 35px;
+    font-size: 1.6em;
+    font-weight: bold;
+    background-color: #555;
+    color: #ccc;
+    border: 2px solid #888;
+    border-radius: 12px;
+    cursor: not-allowed;
+    transition: all 0.4s ease-in-out;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.6);
+    letter-spacing: 1px;
+    outline: none;
+    display: block; /* Para que ocupe su propia línea si es necesario */
+    margin: 30px auto 0; /* Centrar y dar margen superior */
+}
+
+.surprise-button:not([disabled]) {
+    background-color: #ff4500;
+    color: #fff;
+    border-color: #ff4500;
+    cursor: pointer;
+    box-shadow: 0 0 25px #ff4500, 0 0 50px #ff4500, 0 0 75px #ff4500;
+    animation: pulse 1.5s infinite alternate;
+}
+
+.surprise-button:not([disabled]):hover {
+    transform: scale(1.04);
+    background-color: #ff6347;
+    box-shadow: 0 0 30px #ff6347, 0 0 60px #ff6347, 0 0 90px #ff6347;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 25px #ff4500, 0 0 50px #ff4500;
+    }
+    100% {
+        transform: scale(1.015);
+        box-shadow: 0 0 35px #ff4500, 0 0 70px #ff4500, 0 0 100px #ff4500;
+    }
+}
+
+/* Luces de fondo (se mantienen las mismas, ya que son abstractas) */
+body::before,
+body::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.7;
+    z-index: 1;
+}
+
+body::before {
+    width: 280px;
+    height: 280px;
+    background: radial-gradient(circle, #ff00ff, #da70d6);
+    top: -40px;
+    left: -40px;
+    animation: floatLight1 13s infinite ease-in-out;
+}
+
+body::after {
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, #00ffff, #00ced1);
+    bottom: -70px;
+    right: -70px;
+    animation: floatLight2 18s infinite ease-in-out reverse;
+}
+
+@keyframes floatLight1 {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(40px, -40px); }
+    50% { transform: translate(80px, 0); }
+    75% { transform: translate(40px, 40px); }
+    100% { transform: translate(0, 0); }
+}
+
+@keyframes floatLight2 {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(-40px, 40px); }
+    50% { transform: translate(-80px, 0); }
+    75% { transform: translate(-40px, -40px); }
+    100% { transform: translate(0, 0); }
+}
+
+/* Media query para pantallas más pequeñas (móviles) */
+@media (max-width: 768px) { /* Usamos 768px para abarcar tablets en vertical también */
+    .title {
+        font-size: 1.8em;
+    }
+    .countdown {
+        font-size: 2.8em; /* Ajuste para que los números no sean muy pequeños ni muy grandes */
+        flex-direction: column; /* Apilar elementos de la cuenta regresiva en vertical */
+        align-items: center; /* Centrar los elementos apilados */
+        gap: 0; /* Eliminar el espacio horizontal */
+    }
+    .countdown span {
+        min-width: 80px; /* Ancho suficiente para números */
+        padding: 5px 0;
+        margin: 5px 0; /* Margen vertical para separación entre números */
+        box-sizing: border-box; /* Asegura que padding no afecte el width total */
+    }
+    .countdown span + span {
+        margin-left: 0; /* Elimina el margen lateral cuando están apilados */
+    }
+    .countdown span::after {
+        font-size: 0.4em; /* Ajuste del tamaño de la etiqueta */
+        margin-top: -5px;
+    }
+    #days::after, #hours::after, #minutes::after, #seconds::after {
+        /* Aseguramos que las etiquetas no salten de línea inesperadamente */
+        white-space: nowrap;
+    }
+
+    .surprise-button {
+        font-size: 1.3em;
+        padding: 15px 30px;
+        margin-top: 25px; /* Ajuste del margen superior */
+        max-width: 80%; /* Limitar ancho del botón en móvil */
+    }
+    .container {
+        padding: 20px;
+        margin: 15px;
+        border-radius: 12px;
+        max-width: 95vw; /* Aumenta el ancho máximo para aprovechar el espacio */
+    }
+    body::before {
+        width: 180px;
+        height: 180px;
+        filter: blur(90px);
+        top: -20px;
+        left: -20px;
+    }
+    body::after {
+        width: 220px;
+        height: 220px;
+        filter: blur(90px);
+        bottom: -40px;
+        right: -40px;
+    }
+}
+
+/* Media query para pantallas muy estrechas (ej. iPhone 5/SE o dispositivos Android muy pequeños) */
+@media (max-width: 400px) {
+    .title {
+        font-size: 1.5em;
+    }
+    .countdown {
+        font-size: 2.3em;
+    }
+    .countdown span {
+        min-width: 65px;
+        padding: 4px 0;
+        margin: 3px 0;
+    }
+    .surprise-button {
+        font-size: 1.1em;
+        padding: 10px 20px;
+    }
+    .container {
+        padding: 15px;
+        margin: 10px;
+    }
+}
