@@ -1,0 +1,153 @@
+/* Estilos Generales */
+body {
+    font-family: 'Poppins', sans-serif; /* Usé una fuente moderna de ejemplo */
+    margin: 0;
+    background: linear-gradient(135deg, #89cff0, #1e90ff); /* Degradado azul */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    overflow: hidden;
+}
+
+/* Pantalla de Carga */
+.loading-container {
+    text-align: center;
+}
+
+.loader {
+    border: 8px solid #1e90ff; /* Borde azul del círculo de carga */
+    border-top: 8px solid #fff; /* Parte superior blanca */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1.5s linear infinite;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#loading-progress {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+#loading-text {
+    font-size: 1.2em;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+/* Contenido Principal (Formulario) */
+.main-container {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    display: none; /* Oculto inicialmente */
+    width: 90%;
+    max-width: 400px;
+}
+
+h1 {
+    color: #fff;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.heart-icon {
+    margin-left: 10px;
+    font-size: 1.5em;
+    color: #ff69b4; /* Corazón rosa */
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    color: #fff;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1em;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    transition: background-color 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+button {
+    background-color: #1e90ff;
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0077cc;
+}
+
+/* Animación de corazones */
+.hearts {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.heart {
+    color: #89cff0; /* Corazones azules claros */
+    font-size: 2em;
+    position: absolute;
+    animation: fall 10s linear infinite;
+    opacity: 0;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-10vh) translateX(var(--random-x));
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(110vh) translateX(var(--random-x));
+        opacity: 0;
+    }
+}
+
